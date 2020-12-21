@@ -21,7 +21,7 @@ const Repo = (props) => {
                 <List.Description as="a">
                   Stars: {item.stargazers_count}
                 </List.Description>
-                <List.Description content={<a href={item.html_url}><Icon Icon name="world" /></a>}>
+                <List.Description content={<a href={item.html_url}><Icon Icon name="world" />Link Repositório</a>}>
 
                 </List.Description>               
            

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Card, Image, Icon, Button } from 'semantic-ui-react';
+import { Form, Card, Image, Icon, Button } from "semantic-ui-react";
 import "./Search.css";
 import Repo from "../Repo/Repo.jsx";
 import Starred from "../Starred/Starred.jsx";
@@ -36,6 +36,7 @@ const Search = () => {
     setLocation(location);
   };
 
+
   const handleSearch = (e) => {
     setUserInput(e.target.value);
   };
@@ -43,7 +44,8 @@ const Search = () => {
   const handleSubmit = () => {
     axios.get(`https://api.github.com/users/${userInput}`).then((response) => {
       if (response.message) {
-        setErros(response.menssage);
+       
+        setErros(response.messsage);
       } else {
         setData(response.data);
       }
@@ -88,6 +90,7 @@ const Search = () => {
         </Form>
       </div>
       {error ? (
+        
         <h1>{error}</h1>
       ) : (
         <div className="card">

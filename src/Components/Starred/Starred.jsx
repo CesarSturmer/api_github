@@ -8,7 +8,8 @@ const Starred = (props) => {
     listStarred.length !== 0
       ? listStarred.data.map(
           (item) => (
-            <List divided relaxed className="list-content">
+            
+            <List divided relaxed className="list-content" key={item.id}>
               <List.Item className="list-item">
                 <List.Icon name="github" size="large" verticalAlign="middle"/>
                 <List.Content>
@@ -22,6 +23,7 @@ const Starred = (props) => {
 
   return (
     <div>
+
       <ul>{listStarredUser}</ul>
     </div>
   );
