@@ -1,0 +1,25 @@
+.search {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+
+}
+
+.card {
+  display: flex;
+  align-content: center; 
+  justify-content: center ;
+
+}
+
+.card-conteudo{
+  padding-bottom: 3px 0;
+  
+  
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  padding: 20px 5px;
+ 
+}
