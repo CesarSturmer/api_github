@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Icon, Form, Card, Image, Button } from "semantic-ui-react";
 import axios from "axios";
-import { Form, Card, Image, Icon, Button } from "semantic-ui-react";
 import "./Search.css";
 import Repo from "../Repo/Repo.jsx";
 import Starred from "../Starred/Starred.jsx";
@@ -14,9 +14,10 @@ const Search = () => {
   const [repos, setRepos] = useState("");
   const [avatar, setAvatar] = useState("");
   const [userInput, setUserInput] = useState("");
-  const [error, setErros] = useState("");
   const [listRepo, setListRepo] = useState([]);
   const [listStarred, setListStarred] = useState([]);
+
+
 
   const setData = ({
     name,
@@ -36,20 +37,20 @@ const Search = () => {
     setLocation(location);
   };
 
-
   const handleSearch = (e) => {
     setUserInput(e.target.value);
   };
 
+
   const handleSubmit = () => {
-    axios.get(`https://api.github.com/users/${userInput}`).then((response) => {
-      if (response.message) {
-       
-        setErros(response.messsage);
-      } else {
+    axios
+      .get(`https://api.github.com/users/${userInput}`)
+      .then((response) => {
         setData(response.data);
-      }
-    });
+      })
+      .catch(() => {
+        alert("Nenhum usuário foi encontrado, Verifique o nome digitado");
+      });
   };
 
   const handleListRepo = async () => {
@@ -62,6 +63,8 @@ const Search = () => {
     } catch (err) {
       console.log(err);
     }
+
+
   };
 
   const handleListStarred = async () => {
@@ -89,33 +92,30 @@ const Search = () => {
           </Form.Group>
         </Form>
       </div>
-      {error ? (
-        
-        <h1>{error}</h1>
-      ) : (
-        <div className="card">
-          <Card>
-            <Image src={avatar} wrapped ui={false} alt={avatar}></Image>
-            <Card.Content className="card-conteudo">
-              <Card.Header>{name}</Card.Header>
-              <Card.Meta>{userName}</Card.Meta>
-              <Card.Meta>{location}</Card.Meta>
-            </Card.Content>
-            <Card.Content extra>
-              <Icon name="user" verticalAlign="middle" />
-              {followers} Followers
-            </Card.Content>
-            <Card.Content extra>
-              <Icon name="user" verticalAlign="middle" />
-              {repos} Repositorios
-            </Card.Content>
-            <Card.Content extra>
-              <Icon name="user" verticalAlign="middle" />
-              {following} Following
-            </Card.Content>
-          </Card>
-        </div>
-      )}
+
+      <div className="card">
+        <Card>
+          <Image src={avatar} wrapped ui={false} alt={avatar} />
+          <Card.Content className="card-conteudo">
+            <Card.Header>{name}</Card.Header>
+            <Card.Meta>{userName}</Card.Meta>
+            <Card.Meta>{location}</Card.Meta>
+          </Card.Content>
+          <Card.Content extra>
+            <Icon name="user" verticalAlign="middle" />
+            {followers} Followers
+          </Card.Content>
+          <Card.Content extra>
+            <Icon name="user" verticalAlign="middle"></Icon>
+            {repos} Repositorios
+          </Card.Content>
+          <Card.Content extra>
+            <Icon name="user" verticalAlign="middle"></Icon>
+            {following} Following
+          </Card.Content>
+        </Card>
+      </div>
+
       <div className="buttons">
         <Button basic inverted onClick={handleListRepo}>
           Repositorio

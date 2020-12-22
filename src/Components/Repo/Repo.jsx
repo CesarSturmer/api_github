@@ -2,7 +2,6 @@ import React from "react";
 import { List, Icon } from "semantic-ui-react";
 import "./Repo.css";
 
-
 const Repo = (props) => {
   const { listRepo } = props;
 
@@ -21,17 +20,19 @@ const Repo = (props) => {
                 <List.Description as="a">
                   Stars: {item.stargazers_count}
                 </List.Description>
-                <List.Description content={<a href={item.html_url}><Icon Icon name="world" />Link Repositório</a>}>
-
-                </List.Description>               
-           
+                <List.Description as="a">
+                  Link:{" "}
+                  <a href={item.html_url}>
+                    <Icon Icon name="world">
+                      {" "}
+                    </Icon>
+                  </a>
+                </List.Description>
               </List.Content>
             </List.Item>
           </List>
         ))
-     : ''
-
-
+      : "";
 
   return (
     <div>

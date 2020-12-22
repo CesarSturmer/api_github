@@ -4,13 +4,15 @@ import { Icon } from "semantic-ui-react";
 
 const Header = () => {
   return (
-    <header>
+    <>
       <div className="navbar">
         {" "}
         <Icon name="github" size="large" verticalAlign="middle"></Icon>
+         <a href="/"> 
          GitHub Search
+           </a>
       </div>
-    </header>
+    </>
   );
 };
 
