@@ -1,4 +1,4 @@
-#Projeto Compasso - Pesquisa Usuário GitHub
+# Projeto Compasso - Pesquisa Usuário GitHub
 
 The app is used to fetch a GitHub user, its repos and starred repos. Type a GitHub username and click the search button to find a user. If the user exists, you can click on "Repos" or "Starred" to bring a list of his/her repos and starred repos.
 
